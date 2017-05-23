@@ -1,0 +1,28 @@
+language: rust
+
+branches:
+  except:
+    - master
+
+os:
+  - linux
+  - osx
+
+rust:
+  - stable
+
+script:
+  - "./build.sh"
+
+deploy:
+  provider: gcs
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: reproto/reproto-releases
+  bucket: reproto-releases
+  access_key_id:
+    secure: WjgRHBOTKv1J79AsvZQeQLRqPZisrwkWTldiMT6lcHFHP5jc6rYneW+OTk7thy2+Gd6QgRsN4O6ZSd9pkYM9O4gtSz74JSG1318Je0u+cQlEsdPnISq2N6oeVzj96byaqs32WnDmSodj/+qfvlKv0hPjJG/YdjNahUAGh8m7Ve3oOMc6Yia6Yj3BZB7A/nBZyMJByz8EyqzQgblG+JLRnpYFpKGSQc9NxTcUMrf18N4tTKhqGegpUQVP51gmFFGgLDiSjqF2A7AKCyg4PP1+uAB9z7q5E7hoau9UDVMEbg0xV2dNQ/OT0RwQDQp3Suf4cZ4roGCKan94crGYJ+vsqpmklllUh/SL61iT8ASd/Azg4+KGg58X21U5qNVGArxhBN7X8XQ8epuVyfnogYuifS2RhgAmoetfkfMzlPhWlU4YpVtfPEec7ZHrID3+IiaDMUQ6nRiPqjTim0s7wXIS4P2dXpMbZDPTmvpQiMKnl8avqYCVTc+230e6pl+SXiSjO1e6PMC7XBVQuQq+p8iaH3sveFy833dK33ta68p+2Qv+kDtlnnWYmpeA7aryP65b6FB7z+so7IERK0RoTiqaLDqM+DyW7iRK7jPfLhOp09NZwlTutaq7PWX7VAT5lI525AnTrojwj22Wgv23e7CWrxR9dPsCI/05mBoMG4OMiQM=
+  secret_access_key:
+    secure: BWxygzxf1gyiAN6P0g0CUAESKbNR3QrFWC6v6hRlIwV6i33qBawpjMVpdNDV0DBNFIWf9HPkI9PWsPkYaDM6eMiCNjc7gb0I1CcZdU1w18iFXMQU4ewWyg0pRp2zozWbbT7vQ8Ga+eBxcKWbe2PTAgwb4Y1qD3ZCU1DUNa/zWvxZfMVsnCWFASi3VEAZc/7tYcya13OO/6w1fT2XZpLRQjzIiveu85/e/LgHTXgoiSecKmZJLcDxVG/D9wd7NqhR3JWeTT71DSXr2hGjQrASwcu6n5K0vaGZblY0uvx9s5ZGKafj8ygV7+gJB0rSLwcHw5uuLv3pcLp+YOcSGdk8YPc7Aw9pxAp3M+ZMAFl28+c5MwiFVZzVvU6vy83Dp15fnXbpkgWtZ5ydjPqoKu6BBGCHOteisbyck9+oVdOu0rsmzrIwFEDFiOvDtwGlQXgzI7qUIkHoi2NB8v/8FvKGWlWXF+q/cs1j682DNhLQlx4BBythP4gmXdW/Ms5EXNJ3ICfZYaWr9vnrJLKUM8/rzV/LoE6i4VFGb3YVgeiaMkssdxCYnGXnKmF23lhhpeV6fMAgwj4v++QLnLIfUipY3Y0l/VXqgICC379vdjsyDznmW4rms6YkVbWmRDI2wXbVA1Lz2R7g2EHuiYxjI+R1kzPFudtgrlKJ84TzMGy7wh8=
+  local-dir: target/upload
