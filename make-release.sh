@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -9,8 +9,8 @@ if [[ -z $version ]]; then
     exit 1
 fi
 
-echo $version > version
-git add version
+echo $version > build_version
+git add build_version
 git commit -m "release $version"
 git tag $version
-git push origin HEAD --tags
+git push origin HEAD HEAD:refs/tags/$version
