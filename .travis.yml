@@ -1,5 +1,6 @@
 language: rust
 dist: trusty
+cache: cargo
 
 branches:
   except:
