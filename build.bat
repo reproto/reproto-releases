@@ -1,3 +1,5 @@
+rem Read build_version and build the ref that it points to for windows
+
 set /p version=<build_version
 
 set exe=reproto.exe
@@ -12,7 +14,10 @@ set "archive=reproto-%tuple%.tar.gz"
 set "git=https://github.com/reproto/reproto"
 
 echo Building: %tuple%
-cargo install --root %target% --git %git% --tag %version% reproto
+
+If NOT exist %bin% (
+    cargo install --root %target% --git %git% --tag %version% reproto
+)
 
 If NOT exist %bin% (
     echo "Binary not found: %bin%"
