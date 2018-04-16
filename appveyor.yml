@@ -1,0 +1,16 @@
+install:
+  - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
+  - curl -sSf -o rustup-init.exe https://win.rustup.rs
+  - rustup-init.exe --default-host x86_64-pc-windows-msvc --default-toolchain stable -y
+  - set PATH=%PATH%;C:\Users\appveyor\.cargo\bin
+  - rustc -Vv
+  - cargo -V
+  - ps: ./build.ps1
+
+artifacts:
+  - path: target\upload\*.tar.gz
+    name: reproto
+
+branches:
+  only:
+    - /\d+\.\d+\.\d+/
