@@ -5,7 +5,8 @@ install:
   - set PATH=%PATH%;C:\Users\appveyor\.cargo\bin
   - rustc -Vv
   - cargo -V
-  - ps: ./build.ps1
+  - ./build.bat
+  - ps: ./package.ps1
 
 artifacts:
   - path: target\upload\*.tar.gz
